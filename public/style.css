@@ -1,0 +1,181 @@
+/* Custom styles to ensure Inter font and smooth scrolling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray background for a soft feel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent body scroll if content overflows */
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; /* Max width for better readability on larger screens */
+    height: 80vh; /* Fixed height for chat area */
+    background-color: #ffffff;
+    border-radius: 1.5rem; /* More rounded corners for a softer look */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Deeper, softer shadow */
+    overflow: hidden; /* Hide overflow for chat messages */
+    border: 1px solid #e0e0e0; /* Subtle border for definition */
+}
+
+.chat-messages {
+    flex-grow: 1; /* Take available space */
+    overflow-y: auto; /* Scrollable chat area */
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between messages */
+    background-color: #fdfdfd; /* Slightly different background for messages area */
+}
+
+/* Custom Scrollbar Styling (for Webkit browsers like Chrome, Safari) */
+.chat-messages::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f0f2f5; /* Color of the track */
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #a0aec0; /* Color of the scroll thumb */
+    border-radius: 10px; /* Rounded scroll thumb */
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #718096; /* Color when hovering over the scroll thumb */
+}
+
+
+.message-bubble {
+    max-width: 85%; /* Slightly wider bubbles */
+    padding: 0.85rem 1.2rem; /* More padding */
+    border-radius: 1.2rem; /* More rounded corners for bubbles */
+    word-wrap: break-word; /* Break long words */
+    font-size: 0.95rem; /* Slightly smaller font for better readability */
+    line-height: 1.4; /* Better line spacing */
+}
+
+.user-message {
+    background-color: #007bff; /* Blue for user messages */
+    color: white;
+    align-self: flex-end; /* Align to right */
+    border-bottom-right-radius: 0.5rem; /* Slightly less rounded corner for a modern touch */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow for user messages */
+}
+
+.ai-message {
+    background-color: #e2e8f0; /* Light gray for AI messages */
+    color: #333;
+    align-self: flex-start; /* Align to left */
+    border-bottom-left-radius: 0.5rem; /* Slightly less rounded corner for a modern touch */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for AI messages */
+}
+
+.loading-indicator {
+    background-color: #cbd5e0; /* Gray for loading */
+    color: #4a5568;
+    font-style: italic;
+    animation: pulse 1.5s infinite ease-in-out; /* Simple pulsing animation */
+}
+
+/* Keyframes for loading indicator animation */
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.input-area {
+    display: flex;
+    padding: 1.5rem;
+    border-top: 1px solid #e2e8f0; /* Separator line */
+    gap: 0.75rem; /* Space between input and button */
+    background-color: #ffffff; /* Ensure background is white */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow at the top */
+}
+
+/* Input field styling */
+#messageInput {
+    flex-grow: 1;
+    padding: 0.9rem 1.2rem; /* More padding for input */
+    border: 1px solid #d1d5db; /* Lighter border */
+    border-radius: 0.75rem; /* Slightly less rounded than button */
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out; /* Smooth transition for focus */
+}
+
+#messageInput:focus {
+    outline: none;
+    border-color: #3b82f6; /* Blue border on focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* Focus ring effect */
+}
+
+/* Send button styling (already good with Tailwind, but adding some custom for consistency) */
+#sendButton {
+    background-color: #3b82f6; /* Tailwind blue-600 */
+    color: white;
+    font-weight: 600; /* Semi-bold */
+    padding: 0.9rem 1.8rem; /* Adjusted padding */
+    border-radius: 0.75rem; /* Slightly less rounded than button */
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); /* Stronger shadow for button */
+    transition: all 0.2s ease-in-out; /* Smooth transitions */
+    cursor: pointer;
+    border: none; /* Remove default border */
+}
+
+#sendButton:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); /* Enhanced shadow on hover */
+}
+
+#sendButton:active {
+    background-color: #1d4ed8; /* Even darker blue on active */
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3); /* Smaller shadow on active */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .chat-container {
+        height: 95vh; /* Take more height on small screens */
+        border-radius: 0.5rem; /* Less rounded corners on small screens */
+        box-shadow: none; /* Remove shadow on small screens for cleaner look */
+        border: none; /* Remove border on small screens */
+    }
+
+    body {
+        padding: 10px; /* Less padding on small screens */
+    }
+
+    .chat-messages {
+        padding: 1rem; /* Less padding */
+        gap: 0.75rem; /* Smaller gap */
+    }
+
+    .message-bubble {
+        max-width: 95%; /* Wider bubbles on small screens */
+        font-size: 0.9rem; /* Slightly smaller font */
+        padding: 0.6rem 0.9rem;
+    }
+
+    .input-area {
+        padding: 1rem; /* Less padding */
+        gap: 0.5rem; /* Smaller gap */
+    }
+
+    #messageInput, #sendButton {
+        padding: 0.75rem 1rem; /* Smaller padding for input and button */
+        font-size: 0.9rem;
+    }
+}
